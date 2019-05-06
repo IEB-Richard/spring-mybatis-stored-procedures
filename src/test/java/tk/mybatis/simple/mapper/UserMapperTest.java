@@ -11,7 +11,6 @@ import tk.mybatis.simple.model.SysUser;
 
 public class UserMapperTest extends BaseMapperTest {
 
-	@Test
 	public void testSelectUserAndRoleByIdSelect() {
 		// get SqlSession
 		SqlSession sqlSession = getSqlSession();
