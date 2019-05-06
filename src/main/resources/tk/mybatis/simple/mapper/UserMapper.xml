@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tk.mybatis.simple.mapper.UserMapper">
+
+	<resultMap id="userMap" type="SysUser">
+		<id property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="userPassword" column="user_password" />
+		<result property="userEmail" column="user_email" />
+		<result property="userInfo" column="user_info" />
+		<result property="headImg" column="head_img" jdbcType="BLOB" />
+		<result property="createTime" column="create_time"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<resultMap id="userRoleListMapSelect" extends="userMap"
+		type="SysUser">
+		<collection 
+			property="roleList"
+			fetchType="lazy"
+			column="{userId=id}"
+			select="tk.mybatis.simple.mapper.RoleMapper.selectRoleByUserId">
+		</collection>
+	</resultMap>
+	
+	<select id="selectAllUserAndRolesSelect"
+		resultMap="userRoleListMapSelect">
+		select
+			u.id,
+			u.user_name,
+			u.user_password,
+			u.user_email,
+			u.user_info,
+			u.head_img,
+			u.create_time
+		from sys_user u
+	</select>
+
+</mapper>
