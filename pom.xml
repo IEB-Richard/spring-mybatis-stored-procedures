@@ -17,6 +17,13 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.1</version>
 		</dependency>
+		<!-- support java 8 date (JSR-310)  -->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-typehandlers-jsr310 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-typehandlers-jsr310</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
